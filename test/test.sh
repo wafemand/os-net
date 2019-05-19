@@ -54,4 +54,9 @@ echo "--------- upload empty test ----------"
 ${CLIENT} localhost 1337 upload empty emptyFromClient
 check_diff ../server/emptyFromClient empty
 
+echo ""
+echo "--------- upload and download test ----------"
+${CLIENT} localhost 1337 upload file file1
+${CLIENT} localhost 1337 download file1 file2
+check_diff file file2
 
