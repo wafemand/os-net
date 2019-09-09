@@ -30,7 +30,11 @@ in_addr_t hostname_to_ip(string const &hostname) {
 
 
 void printUsage() {
-
+    cout << 
+"./client_app hostname port action source_file destination_file\n \
+    action:\n \
+        download - download from remote path 'source_file' to local path 'destination_file'\n \
+        upload - upload from local path 'source_file' to remote path 'destination_file'" << endl;
 }
 
 
@@ -54,7 +58,7 @@ int main(int argc, char *argv[]) {
         FILE *file = fopen(argv[5], "w");
         client.download(UDPAddress(address, port), argv[4], file);
         fclose(file);
-    } else if(action == "upload") {
+    } else if (action == "upload") {
         FILE *file = fopen(argv[4], "r");
         client.upload(UDPAddress(address, port), file, argv[5]);
         fclose(file);
